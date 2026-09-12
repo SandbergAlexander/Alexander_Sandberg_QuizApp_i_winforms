@@ -10,26 +10,35 @@ using System.Windows.Forms;
 
 namespace QuizApp
 {
-
-    public partial class Form1 : Form
+     public partial class Form1 : Form
     {
-    int antalRätt = 0; 
+    List<string> Frågor = new List<string>
+    {
+    "Vilket språk använder WinForms?",
+    "Vad används en Button till?",
+    "Vad heter Microsofts programmeringsspråk?",
+    "Vad används en Label till?"
+    };
+
+      private int antalRätt = 0;
+      private  int i = 0;
+
 
         public Form1()
         {
             InitializeComponent();
-        //    lblQuestion.Text = "Din nya text";
-
-
+            Frågor.Add("Vilket språk använder WinForms?");
         }
 
         private void button5_Click(object sender, EventArgs e)
-        {
-
+        {            
         
-            string värde = label1.Text;
+            lblQuestion.Text = Frågor[i];
+            i++;
+            if (i >= Frågor.Count) {
+                i = 0; 
 
-            MessageBox.Show(värde);
+            }
         }
 
         private void lblQuestion_Click(object sender, EventArgs e)
@@ -39,30 +48,31 @@ namespace QuizApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
-            antalRätt = 1;
-            label1.Text = "1/1"+" rätt svar det är c#";
+
+         antalRätt = 1;
+         label1.Text = "1/1";
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
             antalRätt = 0;
-            label1.Text = "0/1" + " Fel";
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
 
             antalRätt = 0;
-            label1.Text = "0/1" + " Fel";
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
 
             antalRätt = 0;
-            label1.Text = "0/1" + " Fel";
         }
-    }
+
+       private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+ }
 }
