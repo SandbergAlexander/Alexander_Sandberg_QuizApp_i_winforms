@@ -26,6 +26,7 @@ namespace QuizApp
     "C#",
     "Visa text"
 };
+
         string[] olikaSvar =
      {
     "C#",    "python#",    "js",    "c++",
@@ -82,15 +83,10 @@ namespace QuizApp
         private void button1_Click(object sender, EventArgs e)
         {
 
-            button2.Text =  "/" + Frågor.Count;
-
-            if (antalRätt != 4)
-            {
-                        antalRätt++;
+            label1.Text = Frågor.Count.ToString();
 
 
-            }
-            else {    antalRätt = 4; }
+
 
         }
 
