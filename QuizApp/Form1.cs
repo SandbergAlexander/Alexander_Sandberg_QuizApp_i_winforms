@@ -59,8 +59,12 @@ namespace QuizApp
  
 
         private void button5_Click(object sender, EventArgs e)
-        {            
-        
+        {
+            button1.Text = olikaSvar[i];
+            button2.Text = olikaSvar[i+2];
+            button3.Text = olikaSvar[i+1];
+            button4.Text = olikaSvar[i+3];
+
             lblQuestion.Text = Frågor[i];
             i++;
             if (i >= Frågor.Count) {
@@ -77,8 +81,8 @@ namespace QuizApp
 
         private void button1_Click(object sender, EventArgs e)
         {
- 
-            label1.Text = antalRätt + "/" + Frågor.Count;
+
+            button2.Text =  "/" + Frågor.Count;
 
             if (antalRätt != 4)
             {
