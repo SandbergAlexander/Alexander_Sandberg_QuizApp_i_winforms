@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QuizApp
@@ -13,104 +7,105 @@ namespace QuizApp
     public partial class Form1 : Form
     {
         List<string> Frågor = new List<string>
-    {
-    "Vilket språk använder WinForms?",
-    "Vad används en Button till?",
-    "Vad heter Microsofts programmeringsspråk?",
-    "Vad används en Label till?"
-    };
+        {
+            "Vilket språk använder WinForms?",
+            "Vad används en Button till?",
+            "Vad heter Microsofts programmeringsspråk?",
+            "Vad används en Label till?"
+        };
+
         string[] rättaSvar =
-             {
-    "C#",
-    "Utföra en handling",
-    "C#",
-    "Visa text"
-};
+        {
+            "C#",
+            "Utföra en handling",
+            "C#",
+            "Visa text"
+        };
 
         string[] olikaSvar =
-     {
-    "C#",    "python#",    "js",    "c++",
-    "Utföra en handling",   "ta bort en handling",   "skapar en handling",   "hämtar ett träd",
-    "C#",    "python#",    "js",    "c++",
-    "Visa text"   , "ta bort ",    "hämtar",    "ladda ner",   
-};
-        static int antalRätt = 0;
+        {
+            // Fråga 1
+            "C#", "python#", "js", "c++",
 
-       public void KontrolleraSvar(string svar) {
-        
-        if (svar == rättaSvar[i])
-            {
+            // Fråga 2
+            "Utföra en handling", "ta bort en handling",
+            "skapar en handling", "hämtar ett träd",
 
-                antalRätt++;
-            }
-            label1.Text = antalRätt + "/" + Frågor.Count;
-            i++;
-            if (i>= Frågor.Count) {i=0; }
-            
-        }
+            // Fråga 3
+            "C#", "python#", "js", "c++",
 
+            // Fråga 4
+            "Visa text", "ta bort", "hämtar", "ladda ner"
+        };
 
         private int i = 0;
-
+        private int antalRätt = 0;
 
         public Form1()
         {
             InitializeComponent();
         }
- 
 
-        private void button5_Click(object sender, EventArgs e)
+        private void VisaFråga()
         {
-            button1.Text = olikaSvar[i];
-            button2.Text = olikaSvar[i+2];
-            button3.Text = olikaSvar[i+1];
-            button4.Text = olikaSvar[i+3];
-
             lblQuestion.Text = Frågor[i];
-            i++;
-            if (i >= Frågor.Count) {
-                i = 0; 
 
-            }
+            button1.Text = olikaSvar[i * 4];
+            button2.Text = olikaSvar[i * 4 + 1];
+            button3.Text = olikaSvar[i * 4 + 2];
+            button4.Text = olikaSvar[i * 4 + 3];
         }
 
-        private void lblQuestion_Click(object sender, EventArgs e)
+        private void KontrolleraSvar(string svar)
         {
-  
+            if (svar == rättaSvar[i])
+            {
+                antalRätt++;
+                label1.Text = antalRätt + "/" + Frågor.Count;
+            }
+            else
+            {
+                label1.Text = antalRätt + "/" + Frågor.Count;
+            }
 
+            i++;
+
+            if (i >= Frågor.Count)
+            {
+                i = 0;
+            }
+
+            VisaFråga();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            //  label1.Text = Frågor.Count.ToString();
-            string test = rättaSvar[i];
-            KontrolleraSvar(test);
-
-
-
+            KontrolleraSvar(button1.Text);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+            KontrolleraSvar(button2.Text);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
-   
+            KontrolleraSvar(button3.Text);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-
-            
+            KontrolleraSvar(button4.Text);
         }
 
-       private void Form1_Load(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e)
         {
-
+            VisaFråga();
         }
- }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            label1.Text = "0/" + Frågor.Count;
+        }
+    }
 }

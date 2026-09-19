@@ -48,7 +48,7 @@
             this.lblQuestion.Size = new System.Drawing.Size(174, 13);
             this.lblQuestion.TabIndex = 0;
             this.lblQuestion.Text = "Vilket språk använder WinForms?│";
-            this.lblQuestion.Click += new System.EventHandler(this.lblQuestion_Click);
+      //      this.lblQuestion.Click += new System.EventHandler(this.lblQuestion_Click);
             // 
             // button1
             // 
