@@ -76,15 +76,16 @@ namespace QuizApp
 
         private void lblQuestion_Click(object sender, EventArgs e)
         {
-       
+  
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
 
-            label1.Text = Frågor.Count.ToString();
-
+            //  label1.Text = Frågor.Count.ToString();
+            string test = rättaSvar[i];
+            KontrolleraSvar(test);
 
 
 
