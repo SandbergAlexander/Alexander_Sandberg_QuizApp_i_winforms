@@ -6,6 +6,7 @@ namespace QuizApp
 {
     public partial class Form1 : Form
     {
+       static int antalC = 0;
         List<string> Frågor = new List<string>
         {
             "Vilket språk använder WinForms?",
@@ -56,27 +57,38 @@ namespace QuizApp
             button4.Text = olikaSvar[i * 4 + 3];
         }
 
+
+
         private void KontrolleraSvar(string svar)
         {
             if (svar == rättaSvar[i])
             {
                 antalRätt++;
-                label1.Text = antalRätt + "/" + Frågor.Count;
             }
-            else
-            {
-                label1.Text = antalRätt + "/" + Frågor.Count;
-            }
+
+            antalC++;
+
+            label1.Text = antalRätt + "/" + Frågor.Count;
 
             i++;
 
-            if (i >= Frågor.Count)
+            if (antalC == 4)
             {
-                i = 0;
+                lblQuestion.Text = "Quizet är klart!";
+
+                button1.Enabled = false;
+                button2.Enabled = false;
+                button3.Enabled = false;
+                button4.Enabled = false;
+
+                label1.Text = "Resultat: " + antalRätt + "/" + Frågor.Count;
+
+                return;
             }
 
             VisaFråga();
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -100,7 +112,8 @@ namespace QuizApp
 
         private void button5_Click(object sender, EventArgs e)
         {
-            VisaFråga();
+    
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
